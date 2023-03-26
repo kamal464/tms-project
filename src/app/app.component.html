@@ -1,10 +1,18 @@
-<mat-toolbar color="Accent" >
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+<mat-toolbar color="Accent">
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  >
     <mat-icon>menu</mat-icon>
   </button>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  >
     <mat-icon>home</mat-icon>
-    </button>
+  </button>
   <span>Company Profile</span>
   <!-- <button mat-icon-button class="close-button" [mat-dialog-close]="true">
     <mat-icon class="close-icon" color="warn">close</mat-icon>
@@ -12,46 +20,133 @@
   <span class="example-spacer"></span>
 </mat-toolbar>
 <mat-drawer-container class="example-container">
-  <mat-drawer mode="side" opened  class="example-drawer">
+  <mat-drawer mode="side" opened class="example-drawer">
     <mat-card color="Accent">
-      <div mat-card-avatar class="example-header-image"  alt="Avatar"></div>
-<b>DESIGN TRIBE INDIA PVT.LTD</b>
-<a href="https://designtribeindia.com/" target="_blank">www.designtribeindia.com</a>
+      <div mat-card-avatar class="example-header-image" alt="Avatar"></div>
+      <b>DESIGN TRIBE INDIA PVT.LTD</b>
+      <a href="https://designtribeindia.com/" target="_blank"
+        >www.designtribeindia.com</a
+      >
     </mat-card>
     <mat-list role="list">
-      <mat-list-item role="listitem" ><a href="">Overview</a></mat-list-item>
+      <mat-list-item role="listitem"><a href="">Overview</a></mat-list-item>
       <mat-list-item role="listitem"><a href="">Offices</a></mat-list-item>
       <mat-list-item role="listitem"><a href="">Departments</a></mat-list-item>
-      <mat-list-item role="listitem"><a href="">Departments-Types</a></mat-list-item>
+      <mat-list-item role="listitem"
+        ><a href="">Departments-Types</a></mat-list-item
+      >
       <mat-list-item role="listitem"><a href="">Designations</a></mat-list-item>
       <mat-list-item role="listitem"><a href="">Grades</a></mat-list-item>
-      <mat-list-item role="listitem"><a href="">Identifications</a></mat-list-item>
+      <mat-list-item role="listitem"
+        ><a href="">Identifications</a></mat-list-item
+      >
     </mat-list>
-
   </mat-drawer>
   <mat-drawer-content>
     <h1>Overview</h1>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur, tenetur sunt praesentium, maiores, corporis doloribus fugit accusantium esse tempore minima saepe adipisci ad officiis eligendi? Suscipit fuga accusamus blanditiis repellendus.</p>
+    <p>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur,
+      tenetur sunt praesentium, maiores, corporis doloribus fugit accusantium
+      esse tempore minima saepe adipisci ad officiis eligendi? Suscipit fuga
+      accusamus blanditiis repellendus.
+    </p>
     <div class="container">
       <mat-card class="card">
-        <mat-card-header >
-          <mat-card-title >Overview</mat-card-title>
+        <mat-card-header>
+          <mat-card-title>Overview</mat-card-title>
           <span class="example-spacer"></span>
-          <button mat-icon-create>edit</button>
+          <button mat-icon-create (click)="onPress()">edit</button>
         </mat-card-header>
         <mat-card-content>
-          <div class="formstyle">
-            <mat-form-field>
-              <input matInput placeholder="Input">
-            </mat-form-field>
-            
-            <mat-form-field>
-              <textarea matInput placeholder="Textarea"></textarea>
-            </mat-form-field>
-        </div>
-        </mat-card-content>
-        </mat-card>
-      </div>
-      </mat-drawer-content>
-</mat-drawer-container>
+          <form>
+            <label for="Cname">Registered Company Name: </label><br />
+            <input
+              type="text"
+              id="Came"
+              name="Cname"
+              value="Design Tribe India private limited"
+              disabled
+            /><br />
 
+            <label for="Sname">Short Name:</label><br />
+            <input
+              type="text"
+              id="Sname"
+              name="Sname"
+              value="DTPL"
+              disabled
+            /><br />
+            <label for="country">Country:</label><br />
+            <input
+              type="text"
+              id="country"
+              name="Country"
+              value="India"
+              disabled
+            /><br />
+            <label for="Phone">Phone:</label><br />
+            <input
+              type="tel"
+              id="Phone"
+              name="Phone"
+              value="+91-(0)40-22558877"
+              disabled
+            /><br />
+            <label for="fax">Fax:</label><br />
+            <input
+              type="tel"
+              id="fax"
+              name="fax"
+              value="+91-(0)40-22558877"
+              disabled
+            /><br />
+            <label for="email">Email:</label><br />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value="rsd@designtribeindia.com"
+              disabled
+            /><br />
+            <label for="website">website:</label><br />
+            <input
+              type="text"
+              id="website"
+              name="website"
+              value="www.designtribeindia.com"
+              disabled
+            /><br />
+            <label for="Whatsapp">Whatsapp Support:</label><br />
+            <input
+              type="tel"
+              id="Whatsapp"
+              name="Whatsapp"
+              value="+91-(0)40-22558877"
+              disabled
+            /><br />
+            <label for="linked">LinkedIn:</label><br />
+            <input
+              type="url"
+              id="linked"
+              name="linked"
+              value="www.linkedin.com/company/dtpl"
+              disabled
+            /><br />
+            <label for="remarks">Remarks:</label><br />
+            <input
+              type="text"
+              id="remarks"
+              name="remarks"
+              value="state-of-art development centre located at hyderabad"
+              disabled
+            />
+          </form>
+        </mat-card-content>
+      </mat-card>
+      <br />
+    </div>
+    <div id="comp-render" *ngIf="display">
+      <app-orgform></app-orgform>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
