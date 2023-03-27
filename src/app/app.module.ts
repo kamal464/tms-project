@@ -13,6 +13,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { OrgformComponent } from './orgform/orgform.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InterserviceInterceptor } from './interservice.interceptor';
 
 @NgModule({
@@ -29,6 +30,8 @@ import { InterserviceInterceptor } from './interservice.interceptor';
     MatListModule,
     MatFormFieldModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [
     {

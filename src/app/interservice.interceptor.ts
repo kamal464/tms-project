@@ -16,9 +16,9 @@ export class InterserviceInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
     let myreq = request.clone({
-      method: 'post',
+      // method: 'post',
     });
-    console.log('request intercepted');
+    console.log('request intercepted',myreq);
     return next.handle(myreq);
   }
 }

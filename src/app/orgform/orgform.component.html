@@ -1,33 +1,36 @@
 <mat-card>
   <mat-card-content>
-    <form (submit)="onSubmit(formData)">
+    <form #myForm="ngForm" [formGroup]="empForm" (ngSubmit)="onSubmit(myForm)">
       <label for="Cname">Registered Company Name: </label><br />
       <input
         type="text"
         id="Came"
         name="Cname"
         value="Design Tribe India private limited"
+        formControlName="name"
       /><br />
 
       <label for="Sname">Short Name:</label><br />
-      <input type="text" id="Sname" name="Sname" value="DTPL" /><br />
+      <input type="text"id="Sname" name="Sname" value="DTPL"  formControlName="shortname"/><br />
       <label for="country">Country:</label><br />
-      <input type="text" id="country" name="Country" value="India" /><br />
+      <input type="text" id="country" name="Country" value="India" formControlName="country"/><br />
       <label for="Phone">Phone:</label><br />
       <input
         type="tel"
         id="Phone"
         name="Phone"
         value="+91-(0)40-22558877"
+        formControlName="phone"
       /><br />
       <label for="fax">Fax:</label><br />
-      <input type="tel" id="fax" name="fax" value="+91-(0)40-22558877" /><br />
+      <input type="tel" id="fax" name="fax" value="+91-(0)40-22558877" formControlName="fax"/><br />
       <label for="email">Email:</label><br />
       <input
         type="email"
         id="email"
         name="email"
         value="rsd@designtribeindia.com"
+        formControlName="email"
       /><br />
       <label for="website">website:</label><br />
       <input
@@ -35,13 +38,15 @@
         id="website"
         name="website"
         value="www.designtribeindia.com"
+        formControlName="website"
       /><br />
       <label for="Whatsapp">Whatsapp Support:</label><br />
       <input
         type="tel"
-        id="Whatsapp"
-        name="Whatsapp"
+        id="whatsapp"
+        name="whatsapp"
         value="+91-(0)40-22558877"
+        formControlName="whatsapp"
       /><br />
       <label for="linked">LinkedIn:</label><br />
       <input
@@ -49,6 +54,7 @@
         id="linked"
         name="linked"
         value="www.linkedin.com/company/dtpl"
+        formControlName="linkedin"
       /><br />
       <label for="remarks">Remarks:</label><br />
       <input
@@ -56,6 +62,7 @@
         id="remarks"
         name="remarks"
         value="state-of-art development centre located at hyderabad"
+        formControlName="comments"
       />
       <button mat-raised-button>Cancel</button>
       <button mat-raised-button color="primary" type="submit">Save</button>

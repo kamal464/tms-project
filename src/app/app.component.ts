@@ -20,17 +20,11 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.http
-      .post('https://fakestoreapi.com/products', { name: 'kamal' })
+      .get('https://fakestoreapi.com/products/1',)
       .subscribe((data) => {
         console.log(data);
-      });
+      }); 
   }
 
-  onSubmit(formData) {
-    this.http
-      .post('https://example.com/api', formData)
-      .subscribe((response) => {
-        console.log(response);
-      });
-  }
+ 
 }
