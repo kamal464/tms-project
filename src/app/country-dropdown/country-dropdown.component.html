@@ -1,0 +1,15 @@
+<!-- <select  [(ngModel)]="selectedCountry" (change)="onCountrySelected()">
+    <option value="abc">ddd</option>
+    <option *ngFor="let country of countries" [value]="country.id">{{country.label}}</option>
+  </select> -->
+
+  <mat-form-field>
+    <mat-label>Country</mat-label>
+    <mat-select [(ngModel)]="selectedCountry"   
+      (selectionChange)="onCountrySelected()">
+      
+      <mat-option *ngFor="let country of countries" [value]="country.id">
+        {{ country.country }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field> 

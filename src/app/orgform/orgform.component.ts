@@ -45,13 +45,13 @@ export class OrgformComponent {
       .subscribe((response) => {
         console.log(response);
       });
-  // 
-  // onSubmit(formdata) {
-  //   this.http
-  //     .get('http://192.168.0.55:5000/getorg')
-  //     .subscribe((response) => {
-  //       console.log(response);
-  //     });
+   
+  
+
+
+
+
+      
   }
 
 

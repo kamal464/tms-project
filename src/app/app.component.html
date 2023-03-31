@@ -80,6 +80,7 @@
               <option value="" disabled selected>Select Country</option>
               <option *ngFor="let country of countries" [value]="country.name">{{country.name}}</option>
          </select> -->
+         <app-country-dropdown></app-country-dropdown><br>
             <label for="Phone">Phone:</label><br />
             <input
               type="tel"

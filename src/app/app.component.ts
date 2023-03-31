@@ -22,6 +22,7 @@ export class AppComponent {
     private _fb: FormBuilder,) {
 
       this.empForm = this._fb.group({ 
+        id:new FormControl('1680097249'),
         name:new FormControl(''),
         shortname:new FormControl(''),
         // country:new FormControl(''),
@@ -43,7 +44,7 @@ export class AppComponent {
   
   ngOnInit(): void {
     
-   this.getRecord();
+  //  this.getRecord();
    
   }
 
@@ -80,6 +81,7 @@ update() {
   const formData = this.empForm.value;
 
   this.http.put('http://192.168.0.55:5000/orgupdate', formData).subscribe((user) => {
+
     this.empForm.patchValue(user);
     console.log('field is updated')
   });
