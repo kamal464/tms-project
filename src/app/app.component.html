@@ -74,13 +74,14 @@
             <input type="text"id="Sname" name="Sname" value="DTPL"  formControlName="shortname"/><br />
             <label for="Sname">display Name:</label><br />
             <input type="text"id="dname" name="dname" value="DTPL"  formControlName="displayname"/><br />
-            <!-- <label for="country">Country:</label><br />
-            <input type="text" id="country" name="Country" value="India" formControlName="country"/><br /> -->
-            <!-- <select class="form-control" name="country" id="country">
+            <label for="country">Country:</label><br />
+            <!-- <input type="text" id="country" name="Country" value="India" formControlName="country"/><br />  -->
+             <select class="form-control" name="country" id="country" formControlName="country">
+              <!-- (change)="onCountryselect($event.target.id)" -->
               <option value="" disabled selected>Select Country</option>
-              <option *ngFor="let country of countries" [value]="country.name">{{country.name}}</option>
-         </select> -->
-         <app-country-dropdown></app-country-dropdown><br>
+              <option *ngFor="let country of country_bb_obj " [value]="country.id">{{country.label}}</option>
+         </select> <br>
+         <!-- <app-country-dropdown [data]="country_bb_obj"></app-country-dropdown><br> -->
             <label for="Phone">Phone:</label><br />
             <input
               type="tel"
@@ -138,7 +139,7 @@
       <br />
     </div>
     <div id="comp-render" *ngIf="display">
-      <app-orgform></app-orgform>
+      <app-orgform [data]="country_bb_obj"></app-orgform>
     </div>
   </mat-drawer-content>
 </mat-drawer-container>

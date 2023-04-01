@@ -20,7 +20,7 @@ export class InterserviceInterceptor implements HttpInterceptor {
       headers: request.headers.set('Content-Type', 'application/json')
       // .set('header2', 'header 2 value')
       // .set('header3', 'header 3 value')
-      .set('org_id', '1680009347')
+      .set('org_id', '1680097276')
     });
     console.log('request intercepted',myreq);
     return next.handle(myreq);

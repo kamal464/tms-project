@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CountryService } from '../countryservice.service';
 
@@ -8,22 +8,23 @@ import { CountryService } from '../countryservice.service';
   styleUrls: ['./country-dropdown.component.css']
 })
 export class CountryDropdownComponent {
-  countries: any = [{
-    "id": "IND",
-    "country": "India",
+  @Input() data: any;
+  // countries: any = [{
+  //   "id": "IND",
+  //   "country": "India",
 
-  },{
-    "id": "us",
-    "country": "america",
-  },
-  {
-    "id": "pak",
-    "country": "pakistan",
-  },
-  {
-    "id": "ca",
-    "country": "canada",
-  }];
+  // },{
+  //   "id": "us",
+  //   "country": "america",
+  // },
+  // {
+  //   "id": "pak",
+  //   "country": "pakistan",
+  // },
+  // {
+  //   "id": "ca",
+  //   "country": "canada",
+  // }];
   selectedCountry: any;
 
 
@@ -35,13 +36,13 @@ export class CountryDropdownComponent {
     // });
   }
 
-  onCountrySelected() {
+  // onCountrySelected() {
     
-    const selectedCountry = this.countries.find(c => c.id === this.selectedCountry);
-    this.countryService.saveCountry(selectedCountry).subscribe(() => {
-      console.log(`Saved country: ${selectedCountry.country}`);
-    });
-  }
+  //   const selectedCountry = this.countries.find(c => c.id === this.selectedCountry);
+  //   this.countryService.saveCountry(selectedCountry).subscribe(() => {
+  //     console.log(`Saved country: ${selectedCountry.country}`);
+  //   });
+  // }
 
 
 }
