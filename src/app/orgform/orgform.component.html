@@ -16,7 +16,7 @@
       <input type="text"id="dname" name="dname" value="DTPL"  formControlName="displayname"/><br />
     <label for="country">Country:</label><br />
       <!-- <input type="text" id="country" name="Country" value="India" formControlName="country"/><br /> -->
-       <select class="form-control" name="country" id="country"  formControlName="country">
+       <select class="form-control" name="country" id="country"  formControlName="fkcountrycode">
         <option value="" disabled selected>Select Country</option>
         <option *ngFor="let country of data" [value]="country.id">{{country.label}}</option>
    </select> 

@@ -29,20 +29,20 @@
       >
     </mat-card>
     <mat-list role="list">
-      <mat-list-item role="listitem"><a href="">Overview</a></mat-list-item>
-      <mat-list-item role="listitem"><a href="">Offices</a></mat-list-item>
-      <mat-list-item role="listitem"><a href="">Departments</a></mat-list-item>
-      <mat-list-item role="listitem"
-        ><a href="">Departments-Types</a></mat-list-item
-      >
-      <mat-list-item role="listitem"><a href="">Designations</a></mat-list-item>
-      <mat-list-item role="listitem"><a href="">Grades</a></mat-list-item>
-      <mat-list-item role="listitem"
-        ><a href="">Identifications</a></mat-list-item
-      >
+      <a mat-list-item (click)="showContent('field1')">Overview</a>
+      <a mat-list-item (click)="showContent('field2')">offices</a>
+      <a mat-list-item (click)="showContent('field3')">Departments</a>
+      <a mat-list-item (click)="showContent('field4')">Departments Types</a>
+      <a mat-list-item (click)="showContent('field5')">Designations</a>
+      <a mat-list-item (click)="showContent('field6')">Grades</a>
+      <a mat-list-item (click)="showContent('field7')">Identifications</a>
+     
     </mat-list>
   </mat-drawer>
   <mat-drawer-content>
+    <div  *ngIf="currentField">
+      <ng-container [ngSwitch]="currentField">
+        <div *ngSwitchCase="'field1'">
     <h1>Overview</h1>
     <p>
       Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur,
@@ -50,7 +50,7 @@
       esse tempore minima saepe adipisci ad officiis eligendi? Suscipit fuga
       accusamus blanditiis repellendus.
     </p>
-    <div class="container">
+    <div class="container"  >
       <mat-card class="card">
         <mat-card-header>
           <mat-card-title>Overview</mat-card-title>
@@ -76,7 +76,7 @@
             <input type="text"id="dname" name="dname" value="DTPL"  formControlName="displayname"/><br />
             <label for="country">Country:</label><br />
             <!-- <input type="text" id="country" name="Country" value="India" formControlName="country"/><br />  -->
-             <select class="form-control" name="country" id="country" formControlName="country">
+             <select class="form-control" name="country" id="country" formControlName="fkcountrycode">
               <!-- (change)="onCountryselect($event.target.id)" -->
               <option value="" disabled selected>Select Country</option>
               <option *ngFor="let country of country_bb_obj " [value]="country.id">{{country.label}}</option>
@@ -141,5 +141,14 @@
     <div id="comp-render" *ngIf="display">
       <app-orgform [data]="country_bb_obj"></app-orgform>
     </div>
+        </div>
+        <div *ngSwitchCase="'field2'">
+          <app-offices></app-offices>
+        </div>
+        <div *ngSwitchCase="'field3'">
+          <app-department></app-department>
+        </div>
+      </ng-container>
+  </div>
   </mat-drawer-content>
 </mat-drawer-container>

@@ -23,7 +23,7 @@ export class OrgformComponent {
         name:new FormControl(''),
         shortname:new FormControl(''),
         displayname:new FormControl(''  ),
-        country:new FormControl(this.country_id),
+        fkcountrycode:new FormControl(this.country_id),
         phone:new FormControl(''),
         email:new FormControl(''),
         fax:new FormControl(''),
@@ -39,7 +39,7 @@ export class OrgformComponent {
     
     
     onSubmit(formdata) {
-      this.country_id = this.empForm.get('country').value;
+      this.country_id = this.empForm.get('fkcountrycode').value;
     let jsonform = JSON.stringify(this.empForm.value,);
     console.log(this.country_id)
     console.log(jsonform)

@@ -17,9 +17,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InterserviceInterceptor } from './interservice.interceptor';
 import { CountryDropdownComponent } from './country-dropdown/country-dropdown.component';
 import {MatSelectModule} from '@angular/material/select';
+import { OfficesComponent } from './offices/offices.component';
+import { DepartmentComponent } from './department/department.component';
 
 @NgModule({
-  declarations: [AppComponent, OrgformComponent, CountryDropdownComponent],
+  declarations: [AppComponent, OrgformComponent, CountryDropdownComponent, OfficesComponent, DepartmentComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
