@@ -11,9 +11,27 @@
       /><br />
 
       <label for="Sname">Short Name:</label><br />
-      <input type="text"id="Sname" name="Sname" value="DTPL"  formControlName="shortname"/><br />
-      <label for="country">Country:</label><br />
-      <input type="text" id="country" name="Country" value="India" formControlName="country"/><br />
+      <input
+        type="text"
+        id="Sname"
+        name="Sname"
+        value="DTPL"
+        formControlName="shortname"
+      /><br />
+      <label for="Sname">display Name:</label><br />
+      <input
+        type="text"
+        id="dname"
+        name="dname"
+        value="DTPL"
+        formControlName="displayname"
+      /><br />
+      <!-- <label for="country">Country:</label><br /> -->
+      <!-- <input type="text" id="country" name="Country" value="India" formControlName="country"/><br />  -->
+      <!-- <select class="form-control" name="country" id="country">
+        <option value="" disabled selected>Select Country</option>
+        <option *ngFor="let country of countries" [value]="country.name">{{country.name}}</option>
+   </select> -->
       <label for="Phone">Phone:</label><br />
       <input
         type="tel"
@@ -22,8 +40,6 @@
         value="+91-(0)40-22558877"
         formControlName="phone"
       /><br />
-      <label for="fax">Fax:</label><br />
-      <input type="tel" id="fax" name="fax" value="+91-(0)40-22558877" formControlName="fax"/><br />
       <label for="email">Email:</label><br />
       <input
         type="email"
@@ -31,6 +47,14 @@
         name="email"
         value="rsd@designtribeindia.com"
         formControlName="email"
+      /><br />
+      <label for="fax">Fax:</label><br />
+      <input
+        type="tel"
+        id="fax"
+        name="fax"
+        value="+91-(0)40-22558877"
+        formControlName="fax"
       /><br />
       <label for="website">website:</label><br />
       <input

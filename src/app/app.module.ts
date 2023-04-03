@@ -15,9 +15,11 @@ import { OrgformComponent } from './orgform/orgform.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InterserviceInterceptor } from './interservice.interceptor';
+import { CountryDropdownComponent } from './country-dropdown/country-dropdown.component';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
-  declarations: [AppComponent, OrgformComponent],
+  declarations: [AppComponent, OrgformComponent, CountryDropdownComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -32,6 +34,7 @@ import { InterserviceInterceptor } from './interservice.interceptor';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    MatSelectModule
   ],
   providers: [
     {
