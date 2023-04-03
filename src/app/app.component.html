@@ -29,116 +29,165 @@
       >
     </mat-card>
     <mat-list role="list">
-      <mat-list-item role="listitem"><a href="">Overview</a></mat-list-item>
-      <mat-list-item role="listitem"><a href="">Offices</a></mat-list-item>
-      <mat-list-item role="listitem"><a href="">Departments</a></mat-list-item>
-      <mat-list-item role="listitem"
-        ><a href="">Departments-Types</a></mat-list-item
-      >
-      <mat-list-item role="listitem"><a href="">Designations</a></mat-list-item>
-      <mat-list-item role="listitem"><a href="">Grades</a></mat-list-item>
-      <mat-list-item role="listitem"
-        ><a href="">Identifications</a></mat-list-item
-      >
+      <a mat-list-item (click)="showContent('field1')">Overview</a>
+      <a mat-list-item (click)="showContent('field2')">offices</a>
+      <a mat-list-item (click)="showContent('field3')">Departments</a>
+      <a mat-list-item (click)="showContent('field4')">Departments Types</a>
+      <a mat-list-item (click)="showContent('field5')">Designations</a>
+      <a mat-list-item (click)="showContent('field6')">Grades</a>
+      <a mat-list-item (click)="showContent('field7')">Identifications</a>
     </mat-list>
   </mat-drawer>
   <mat-drawer-content>
-    <h1>Overview</h1>
-    <p>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur,
-      tenetur sunt praesentium, maiores, corporis doloribus fugit accusantium
-      esse tempore minima saepe adipisci ad officiis eligendi? Suscipit fuga
-      accusamus blanditiis repellendus.
-    </p>
-    <div class="container">
-      <mat-card class="card">
-        <mat-card-header>
-          <mat-card-title>Overview</mat-card-title>
-          <span class="example-spacer"></span>
-          <button mat-icon-create (click)="onPress()">add</button><br>
-          <button mat-icon-create (click)="update()">update</button>
-          <button mat-icon-create (click)="onDelete()">Delete</button>
-        </mat-card-header>
-        <mat-card-content>
-          <form [formGroup]="empForm" >
-            <label for="Cname">Registered Company Name: </label><br />
-            <input
-              type="text"
-              id="Came"
-              name="Cname"
-              value="Design Tribe India private limited"
-              formControlName="name"
-            /><br />
-      
-            <label for="Sname">Short Name:</label><br />
-            <input type="text"id="Sname" name="Sname" value="DTPL"  formControlName="shortname"/><br />
-            <label for="Sname">display Name:</label><br />
-            <input type="text"id="dname" name="dname" value="DTPL"  formControlName="displayname"/><br />
-            <!-- <label for="country">Country:</label><br />
-            <input type="text" id="country" name="Country" value="India" formControlName="country"/><br /> -->
-            <!-- <select class="form-control" name="country" id="country">
-              <option value="" disabled selected>Select Country</option>
-              <option *ngFor="let country of countries" [value]="country.name">{{country.name}}</option>
-         </select> -->
-         <app-country-dropdown></app-country-dropdown><br>
-            <label for="Phone">Phone:</label><br />
-            <input
-              type="tel"
-              id="Phone"
-              name="Phone"
-              value="+91-(0)40-22558877"
-              formControlName="phone"
-            /><br />
-            <label for="email">Email:</label><br />
-            <input
-            type="email"
-            id="email"
-            name="email"
-            value="rsd@designtribeindia.com"
-            formControlName="email"
-            /><br />
-            <label for="fax">Fax:</label><br />
-            <input type="tel" id="fax" name="fax" value="+91-(0)40-22558877" formControlName="fax"/><br />
-            <label for="website">website:</label><br />
-            <input
-              type="text"
-              id="website"
-              name="website"
-              value="www.designtribeindia.com"
-              formControlName="website"
-            /><br />
-            <label for="Whatsapp">Whatsapp Support:</label><br />
-            <input
-              type="tel"
-              id="whatsapp"
-              name="whatsapp"
-              value="+91-(0)40-22558877"
-              formControlName="whatsapp"
-            /><br />
-            <label for="linked">LinkedIn:</label><br />
-            <input
-              type="url"
-              id="linked"
-              name="linked"
-              value="www.linkedin.com/company/dtpl"
-              formControlName="linkedin"
-            /><br />
-            <label for="remarks">Remarks:</label><br />
-            <input
-              type="text"
-              id="remarks"
-              name="remarks"
-              value="state-of-art development centre located at hyderabad"
-              formControlName="comments"
-            />
-         
-          </form>
-        </mat-card-content>
-      </mat-card>
-      <br />
-    </div>
-    <div id="comp-render" *ngIf="display">
-      <app-orgform></app-orgform>
+    <div *ngIf="currentField">
+      <ng-container [ngSwitch]="currentField">
+        <div *ngSwitchCase="'field1'">
+          <h1>Overview</h1>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Consequatur, tenetur sunt praesentium, maiores, corporis doloribus
+            fugit accusantium esse tempore minima saepe adipisci ad officiis
+            eligendi? Suscipit fuga accusamus blanditiis repellendus.
+          </p>
+          <div class="container">
+            <mat-card class="card">
+              <mat-card-header>
+                <mat-card-title>Overview</mat-card-title>
+                <span class="example-spacer"></span>
+                <button mat-icon-create (click)="onPress()">add</button><br />
+                <button mat-icon-create (click)="update()">update</button>
+                <button mat-icon-create (click)="onDelete()">Delete</button>
+              </mat-card-header>
+              <mat-card-content>
+                <form [formGroup]="empForm">
+                  <label for="Cname">Registered Company Name: </label><br />
+                  <input
+                    type="text"
+                    id="Came"
+                    name="Cname"
+                    value="Design Tribe India private limited"
+                    formControlName="name"
+                  /><br />
+
+                  <label for="Sname">Short Name:</label><br />
+                  <input
+                    type="text"
+                    id="Sname"
+                    name="Sname"
+                    value="DTPL"
+                    formControlName="shortname"
+                  /><br />
+                  <label for="Sname">display Name:</label><br />
+                  <input
+                    type="text"
+                    id="dname"
+                    name="dname"
+                    value="DTPL"
+                    formControlName="displayname"
+                  /><br />
+                  <label for="country">Country:</label><br />
+                  <!-- <input type="text" id="country" name="Country" value="India" formControlName="country"/><br />  -->
+                  <select
+                    class="form-control"
+                    name="country"
+                    id="country"
+                    formControlName="fkcountrycode"
+                  >
+                    <!-- (change)="onCountryselect($event.target.id)" -->
+                    <option value="" disabled selected>Select Country</option>
+                    <option
+                      *ngFor="let country of country_bb_obj"
+                      [value]="country.id"
+                    >
+                      {{ country.label }}
+                    </option>
+                  </select>
+                  <br />
+                  <!-- <app-country-dropdown [data]="country_bb_obj"></app-country-dropdown><br> -->
+                  <label for="Phone">Phone:</label><br />
+                  <input
+                    type="tel"
+                    id="Phone"
+                    name="Phone"
+                    value="+91-(0)40-22558877"
+                    formControlName="phone"
+                  /><br />
+                  <label for="email">Email:</label><br />
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value="rsd@designtribeindia.com"
+                    formControlName="email"
+                  /><br />
+                  <label for="fax">Fax:</label><br />
+                  <input
+                    type="tel"
+                    id="fax"
+                    name="fax"
+                    value="+91-(0)40-22558877"
+                    formControlName="fax"
+                  /><br />
+                  <label for="website">website:</label><br />
+                  <input
+                    type="text"
+                    id="website"
+                    name="website"
+                    value="www.designtribeindia.com"
+                    formControlName="website"
+                  /><br />
+                  <label for="Whatsapp">Whatsapp Support:</label><br />
+                  <input
+                    type="tel"
+                    id="whatsapp"
+                    name="whatsapp"
+                    value="+91-(0)40-22558877"
+                    formControlName="whatsapp"
+                  /><br />
+                  <label for="linked">LinkedIn:</label><br />
+                  <input
+                    type="url"
+                    id="linked"
+                    name="linked"
+                    value="www.linkedin.com/company/dtpl"
+                    formControlName="linkedin"
+                  /><br />
+                  <label for="remarks">Remarks:</label><br />
+                  <input
+                    type="text"
+                    id="remarks"
+                    name="remarks"
+                    value="state-of-art development centre located at hyderabad"
+                    formControlName="comments"
+                  />
+                </form>
+              </mat-card-content>
+            </mat-card>
+            <br />
+          </div>
+          <div id="comp-render" *ngIf="display">
+            <app-orgform [data]="country_bb_obj"></app-orgform>
+          </div>
+        </div>
+        <div *ngSwitchCase="'field2'">
+          <app-offices></app-offices>
+        </div>
+        <div *ngSwitchCase="'field3'">
+          <app-department></app-department>
+        </div>
+        <div *ngSwitchCase="'field4'">
+          <app-departmenttype></app-departmenttype>
+        </div>
+        <div *ngSwitchCase="'field5'">
+          <app-designations></app-designations>
+        </div>
+        <div *ngSwitchCase="'field6'">
+          <app-grades></app-grades>
+        </div>
+        <div *ngSwitchCase="'field7'">
+          <app-identifications></app-identifications>
+        </div>
+      </ng-container>
     </div>
   </mat-drawer-content>
 </mat-drawer-container>

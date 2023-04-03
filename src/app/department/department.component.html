@@ -1,0 +1,165 @@
+<h1>Departments</h1>
+<p>
+  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur, tenetur
+  sunt praesentium, maiores, corporis doloribus fugit accusantium esse tempore
+  minima saepe adipisci ad officiis eligendi? Suscipit fuga accusamus blanditiis
+  repellendus.
+</p>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Civil-01(DTPL-HYD)</mat-card-title>
+    <span class="example-spacer"></span>
+    <button mat-icon-create (click)="onPress()">add</button><br />
+    <button mat-icon-create (click)="updateDepartment()">update</button>
+    <button mat-icon-create (click)="deleteOffice()">Delete</button>
+  </mat-card-header>
+  <mat-card-content>
+    <form
+      #myForm="ngForm"
+      [formGroup]="depform"
+      (ngSubmit)="addDepartment(myForm)"
+    >
+      <!-- (ngSubmit)="onSubmit(myForm)" -->
+
+      <label for="depid">Office Type</label><br />
+      <select
+        class="form-control"
+        name="depid"
+        id="orgid"
+        formControlName="fkofficeid"
+      >
+        <option value="" disabled selected>Select</option>
+        <option *ngFor="let off of office_dd" [value]="off.id">
+          {{ off.label }}
+        </option>
+      </select>
+      <br />
+      <label for="orgid">Oraganization Name</label><br />
+      <select
+        class="form-control"
+        name="orgid"
+        id="orgid"
+        formControlName="fkorgid"
+      >
+        <option value="" disabled selected>Select</option>
+        <option *ngFor="let org of org_dd" [value]="org.id">
+          {{ org.label }}
+        </option>
+      </select>
+      <br />
+      <label for="depid">Department Type</label><br />
+      <input
+        type="text"
+        id="deptype"
+        name="deptype"
+        value="deptype"
+        formControlName="fkdepartmenttypecode"
+      /><br />
+
+      <label for="name">Name</label><br />
+      <input
+        type="text"
+        id="name"
+        name="name"
+        value="Designtribe"
+        formControlName="name"
+      /><br />
+      <label for="hdepart">Head of the Department</label><br />
+      <input
+        type="text"
+        id="hdepart"
+        name="hdepart"
+        value="Designtribe"
+        formControlName="name"
+      /><br />
+      <!-- <select
+        class="form-control"
+        name="hdepart"
+        id="hdepart"
+        formControlName="headofdepartment"
+      >
+        <option value="" disabled selected>Select</option>
+        <option *ngFor="let dep of departments" [value]="dep.id">
+          {{ dep.label }}
+        </option>
+      </select> -->
+    </form>
+    <br />
+    <br />
+    <br />
+    <div *ngIf="display">
+      <form
+        #myForm="ngForm"
+        [formGroup]="depform"
+        (ngSubmit)="addDepartment(myForm)"
+      >
+        <!-- (ngSubmit)="onSubmit(myForm)" -->
+
+        <label for="depid">Office Type</label><br />
+        <select
+          class="form-control"
+          name="depid"
+          id="orgid"
+          formControlName="fkofficeid"
+        >
+          <option value="" disabled selected>Select</option>
+          <option *ngFor="let off of office_dd" [value]="off.id">
+            {{ off.label }}
+          </option>
+        </select>
+        <br />
+        <label for="orgid">Oraganization Name</label><br />
+        <select
+          class="form-control"
+          name="orgid"
+          id="orgid"
+          formControlName="fkorgid"
+        >
+          <option value="" disabled selected>Select</option>
+          <option *ngFor="let org of org_dd" [value]="org.id">
+            {{ org.label }}
+          </option>
+        </select>
+        <br />
+        <label for="depid">Department Type</label><br />
+        <input
+          type="text"
+          id="deptype"
+          name="deptype"
+          value="deptype"
+          formControlName="fkdepartmenttypecode"
+        /><br />
+
+        <label for="name">Name</label><br />
+        <input
+          type="text"
+          id="name"
+          name="name"
+          value="Designtribe"
+          formControlName="name"
+        /><br />
+        <label for="hdepart">Head of the Department</label><br />
+        <input
+          type="text"
+          id="hdepart"
+          name="hdepart"
+          value="Designtribe"
+          formControlName="name"
+        /><br />
+        <!-- <select
+          class="form-control"
+          name="hdepart"
+          id="orgid"
+          formControlName="headofdepartment"
+        >
+          <option value="" disabled selected>Select</option>
+          <option *ngFor="let dep of departments" [value]="dep.id">
+            {{ dep.label }}
+          </option>
+        </select> -->
+        <button mat-raised-button>Cancel</button>
+        <button mat-raised-button color="primary" type="submit">Save</button>
+      </form>
+    </div>
+  </mat-card-content>
+</mat-card>

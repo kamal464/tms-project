@@ -1,0 +1,98 @@
+<h1>Designations</h1>
+<p>
+  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur, tenetur
+  sunt praesentium, maiores, corporis doloribus fugit accusantium esse tempore
+  minima saepe adipisci ad officiis eligendi? Suscipit fuga accusamus blanditiis
+  repellendus.
+</p>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Adding New Designation</mat-card-title>
+    <span class="example-spacer"></span>
+    <button mat-icon-create (click)="onPress()">add</button><br />
+    <button mat-icon-create (click)="updateDesign()">update</button>
+    <button mat-icon-create (click)="deleteDesign()">Delete</button>
+  </mat-card-header>
+  <mat-card-content>
+    <form #myForm="ngForm" [formGroup]="designform">
+      <!-- (ngSubmit)="onSubmit(myForm)" -->
+
+      <label for="orgid">Organization</label><br />
+      <select
+        class="form-control"
+        name="orgid"
+        id="orgid"
+        formControlName="fkorgid"
+      >
+        <option value="" disabled selected>Select</option>
+        <option *ngFor="let org of org_bb_obj" [value]="org.id">
+          {{ org.label }}
+        </option>
+      </select>
+      <br />
+      <label for="code">Code</label><br />
+      <input
+        type="text"
+        id="code"
+        name="code"
+        value="DTPL"
+        formControlName="code"
+      /><br />
+      <label for="name">Name</label><br />
+      <input
+        type="text"
+        id="name"
+        name="name"
+        value="Designtribe"
+        formControlName="name"
+      /><br />
+      <!-- <label for="name">Type</label><br />
+         <input type="text"id="type" name="type" value="Registered office"  formControlName="name"/><br /> -->
+    </form>
+    <br />
+    <br />
+    <div *ngIf="display">
+      <form
+        #myForm="ngForm"
+        [formGroup]="designform"
+        (ngSubmit)="addDesign(myForm)"
+      >
+        <!-- (ngSubmit)="onSubmit(myForm)" -->
+
+        <label for="orgid">Organization</label><br />
+        <select
+          class="form-control"
+          name="orgid"
+          id="orgid"
+          formControlName="fkorgid"
+        >
+          <option value="" disabled selected>Select</option>
+          <option *ngFor="let org of org_bb_obj" [value]="org.id">
+            {{ org.label }}
+          </option>
+        </select>
+        <br />
+        <label for="code">Code</label><br />
+        <input
+          type="text"
+          id="code"
+          name="Code"
+          value="DTPL"
+          formControlName="code"
+        /><br />
+        <label for="name">Name</label><br />
+        <input
+          type="text"
+          id="name"
+          name="name"
+          value="Designtribe"
+          formControlName="name"
+        /><br />
+        <!-- <label for="type">Type</label><br />
+             <input type="text"id="type" name="type" value="Registered office"  formControlName="type"/><br /> -->
+        <button mat-raised-button>Cancel</button>
+        <button mat-raised-button color="primary" type="submit">Save</button>
+      </form>
+    </div>
+  </mat-card-content>
+</mat-card>

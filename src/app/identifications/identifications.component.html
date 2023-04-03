@@ -1,0 +1,94 @@
+<h1>Identifications</h1>
+<p>
+  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur, tenetur
+  sunt praesentium, maiores, corporis doloribus fugit accusantium esse tempore
+  minima saepe adipisci ad officiis eligendi? Suscipit fuga accusamus blanditiis
+  repellendus.
+</p>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Adding New Identity</mat-card-title>
+    <span class="example-spacer"></span>
+    <button mat-icon-create>add</button><br />
+    <button mat-icon-create>update</button>
+    <button mat-icon-create>Delete</button>
+  </mat-card-header>
+  <mat-card-content>
+    <form #myForm="ngForm" [formGroup]="identityform">
+      <!-- (ngSubmit)="onSubmit(myForm)" -->
+
+      <label for="orgid">Organization</label><br />
+      <select
+        class="form-control"
+        name="orgid"
+        id="orgid"
+        formControlName="fkorgid"
+      >
+        <option value="" disabled selected>Select</option>
+        <option *ngFor="let org of org_bb_obj" [value]="org.id">
+          {{ org.label }}
+        </option>
+      </select>
+      <br />
+      <label for="officeid">Office</label><br />
+      <select
+        class="form-control"
+        name="officeid"
+        id="officeid"
+        formControlName="fkofficeid"
+      >
+        <option value="" disabled selected>Select</option>
+        <option *ngFor="let office of offices" [value]="office.id">
+          {{ office.label }}
+        </option>
+      </select>
+      <br />
+      <label for="identity">Identity Type</label><br />
+      <select
+        class="form-control"
+        name="identity"
+        id="identity"
+        formControlName="type"
+      >
+        <option value="" disabled selected>Select</option>
+        <option *ngFor="let identity of identites" [value]="identity.id">
+          {{ identity.label }}
+        </option>
+      </select>
+      <br />
+
+      <label for="issued">Issued By</label>
+      <select
+        class="form-control"
+        name="issued"
+        id="issued"
+        formControlName="issuedby"
+      >
+        <option value="" disabled selected>Select</option>
+        <option *ngFor="let issued of issuedby" [value]="issued.id">
+          {{ issued.label }}
+        </option>
+      </select>
+      <br />
+
+      <label for="date">Issued Date</label>
+      <input type="date" formControlName="issuedate" /> <br />
+
+      <label for="number">Identity Number</label>
+      <input type="text" formControlName="number" /> <br />
+      <label for="name">Identity name</label>
+      <input type="text" formControlName="name" /> <br />
+      <label for="date">validfromdate</label>
+      <input type="date" formControlName="validfromdate" /> <br />
+      <label for="date">validuptodate Date</label>
+      <input type="date" formControlName="validuptodate" /> <br />
+      <br />
+      <label for="file">Choose File</label>
+      <input type="file" multiple (change)="onFilesSelected($event)" />
+      <button (click)="onUpload()">Upload</button>
+      <div *ngFor="let file of files">
+        {{ file.name }}: {{ fileUploadStatus[file.name].progress | async }}%
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
