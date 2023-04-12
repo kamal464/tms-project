@@ -14,7 +14,7 @@
     <mat-icon>home</mat-icon>
   </button>
   <span>Company Profile</span>
-  
+
   <span class="example-spacer"></span>
 </mat-toolbar>
 <mat-drawer-container class="example-container">
@@ -35,187 +35,285 @@
       <a mat-list-item (click)="showContent('field6')">Grades</a>
       <a mat-list-item (click)="showContent('field7')">Identifications</a>
       <a mat-list-item (click)="showContent('field8')">Settings</a>
-      
     </mat-list>
   </mat-drawer>
-<div>
-
-  <div class="title-hold" >
-    <span class="title mat-display-1 primary-color-text">Overview </span>
-    <span class="sub-title mat-small"> Company's overall Information</span>
-<div class="content-hold"  >
-  <mat-toolbar class="tool-bar">
-    <span class="tool-bar-title"  >
-      <!-- [ngClass]="{'no-transform': noTransform}" -->overview
-    </span>
-  <span class="spacer"></span>
-  <button mat-button color="primary" class="tool-bar-button" matTooltip="Edit"  *ngIf="_currentAction == 'view'"
-  (click)="doAction('edit')"
-    >
-    <mat-icon>edit</mat-icon>
-    <span class="button-label">Edit</span>
-  </button>
-  <button mat-button class="tool-bar-button" matTooltip="Cancel" (click)="doAction('cancel')"
-  *ngIf="_currentAction == 'new' || _currentAction == 'edit'">
-  <mat-icon>cancel</mat-icon>
-  <span class="button-label">Cancel</span>
-</button>
-<button mat-raised-button color="primary" class="tool-bar-button" matTooltip="Save Changes"
-  (click)="doAction('save')" *ngIf="_currentAction == 'new' || _currentAction == 'edit'">
-  <mat-icon>save</mat-icon>
-  <span class="button-label">Save</span>
-</button>
-  </mat-toolbar>
-  <div class="company-overview-contents content-data-hold "  *ngIf="_currentAction == 'view'">
-    <div class="view-entry-hold two-column-field">
-      <mat-label class="entry-label">Registered Company Name</mat-label>
-      <span class="entry-data" >{{companyInfo.name}}</span>
-    </div>
-    <div class="view-entry-hold two-column-field">
-      <mat-label class="entry-label">Short Name</mat-label>
-      <span class="entry-data">{{companyInfo.shortname}}</span>
-    </div>
-    <div class="view-entry-hold two-column-field">
-      <mat-label class="entry-label">Country</mat-label>
-      <span class="entry-data flag-hold"> 
-        {{companyInfo.fkcountrycode}}
-      </span>
-    </div>
-    <div class="view-entry-hold two-column-field">
-      <mat-label class="entry-label">Phone</mat-label>
-      <span class="entry-data">
-        <span></span>
-        {{companyInfo.phone}}
-        </span>
-    </div>
-    <div class="view-entry-hold two-column-field">
-      <mat-label class="entry-label">Fax</mat-label>
-      <span class="entry-data">
-        <span></span>{{companyInfo.fax}}
-        </span>
-    </div>
-    <div class="view-entry-hold two-column-field">
-      <mat-label class="entry-label">Email</mat-label>
-      <span class="entry-data">{{companyInfo.email}}</span>
-    </div>
-    <div class="view-entry-hold two-column-field">
-      <mat-label class="entry-label">Website</mat-label>
-      <span class="entry-data">{{companyInfo.website}}</span>
-    </div>
-    <div class="view-entry-hold two-column-field">
-      <mat-label class="entry-label">WhatsApp Support</mat-label>
-      <span class="entry-data">
-        <span>{{companyInfo.whatsapp}}</span>
-       </span>
-    </div>
-    <div class="view-entry-hold">
-      <mat-label class="entry-label">LinkedIN</mat-label>
-      <span class="entry-data">{{companyInfo.linkedin}}</span>
-    </div>
-    <div class="view-entry-hold">
-      <mat-label class="entry-label">Remarks</mat-label>
-      <span class="entry-data">{{companyInfo.remarks}}</span>
-    </div>
-  </div>
-</div>
-</div>
-<div>
-  <div class="company-overview-contents content-data-hold" [formGroup]="empForm"
-  *ngIf="_currentAction == 'edit' || errorMsg">
-  
-  <div class="form-field-hold two-column-field">
-    <mat-label class="form-field-label">Registered Company Name</mat-label>
-    <mat-form-field class="form-field-input" floatPlaceholder="never" appearance="fill">
-      <input matInput placeholder="Ex: Organisation India Pvt Ltd" formControlName="name">
-    </mat-form-field>
-  </div>
-  <div class="form-field-hold two-column-field">
-    <mat-label class="form-field-label">Short Name</mat-label>
-    <mat-form-field class="form-field-input" floatPlaceholder="never" appearance="fill">
-      <input matInput placeholder="Ex: Organisation India Pvt Ltd" formControlName="shortname">
-    </mat-form-field>
-  </div>
-  <div class="form-field-hold two-column-field">
-    <mat-label class="form-field-label">Country</mat-label>
-    <!-- <mat-form-field class="form-field-input" floatPlaceholder="never" appearance="fill">
+  <div>
+    <div *ngIf="currentField">
+      <ng-container [ngSwitch]="currentField">
+        <div *ngSwitchCase="'field1'">
+          <div class="title-hold">
+            <span class="title mat-display-1 primary-color-text"
+              >Overview
+            </span>
+            <span class="sub-title mat-small">
+              Company's overall Information</span
+            >
+            <div class="content-hold">
+              <mat-toolbar class="tool-bar">
+                <span class="tool-bar-title">
+                  <!-- [ngClass]="{'no-transform': noTransform}" -->overview
+                </span>
+                <span class="spacer"></span>
+                <button
+                  mat-button
+                  color="primary"
+                  class="tool-bar-button"
+                  matTooltip="Edit"
+                  *ngIf="_currentAction == 'view'"
+                  (click)="doAction('edit')"
+                >
+                  <mat-icon>edit</mat-icon>
+                  <span class="button-label">Edit</span>
+                </button>
+                <button
+                  mat-button
+                  class="tool-bar-button"
+                  matTooltip="Cancel"
+                  (click)="doAction('cancel')"
+                  *ngIf="_currentAction == 'new' || _currentAction == 'edit'"
+                >
+                  <mat-icon>cancel</mat-icon>
+                  <span class="button-label">Cancel</span>
+                </button>
+                <button
+                  mat-raised-button
+                  color="primary"
+                  class="tool-bar-button"
+                  matTooltip="Save Changes"
+                  (click)="doAction('save')"
+                  *ngIf="_currentAction == 'new' || _currentAction == 'edit'"
+                >
+                  <mat-icon>save</mat-icon>
+                  <span class="button-label">Save</span>
+                </button>
+              </mat-toolbar>
+              <div
+                class="company-overview-contents content-data-hold"
+                *ngIf="_currentAction == 'view'"
+              >
+                <div class="view-entry-hold two-column-field">
+                  <mat-label class="entry-label"
+                    >Registered Company Name</mat-label
+                  >
+                  <span class="entry-data">{{ companyInfo.name }}</span>
+                </div>
+                <div class="view-entry-hold two-column-field">
+                  <mat-label class="entry-label">Short Name</mat-label>
+                  <span class="entry-data">{{ companyInfo.shortname }}</span>
+                </div>
+                <div class="view-entry-hold two-column-field">
+                  <mat-label class="entry-label">Country</mat-label>
+                  <span class="entry-data flag-hold">
+                    {{ companyInfo.fkcountrycode }}
+                  </span>
+                </div>
+                <div class="view-entry-hold two-column-field">
+                  <mat-label class="entry-label">Phone</mat-label>
+                  <span class="entry-data">
+                    <span></span>
+                    {{ companyInfo.phone }}
+                  </span>
+                </div>
+                <div class="view-entry-hold two-column-field">
+                  <mat-label class="entry-label">Fax</mat-label>
+                  <span class="entry-data">
+                    <span></span>{{ companyInfo.fax }}
+                  </span>
+                </div>
+                <div class="view-entry-hold two-column-field">
+                  <mat-label class="entry-label">Email</mat-label>
+                  <span class="entry-data">{{ companyInfo.email }}</span>
+                </div>
+                <div class="view-entry-hold two-column-field">
+                  <mat-label class="entry-label">Website</mat-label>
+                  <span class="entry-data">{{ companyInfo.website }}</span>
+                </div>
+                <div class="view-entry-hold two-column-field">
+                  <mat-label class="entry-label">WhatsApp Support</mat-label>
+                  <span class="entry-data">
+                    <span>{{ companyInfo.whatsapp }}</span>
+                  </span>
+                </div>
+                <div class="view-entry-hold">
+                  <mat-label class="entry-label">LinkedIN</mat-label>
+                  <span class="entry-data">{{ companyInfo.linkedin }}</span>
+                </div>
+                <div class="view-entry-hold">
+                  <mat-label class="entry-label">Remarks</mat-label>
+                  <span class="entry-data">{{ companyInfo.remarks }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              class="company-overview-contents content-data-hold"
+              [formGroup]="empForm"
+              *ngIf="_currentAction == 'edit' || errorMsg"
+            >
+              <div class="form-field-hold two-column-field">
+                <mat-label class="form-field-label"
+                  >Registered Company Name</mat-label
+                >
+                <mat-form-field
+                  class="form-field-input"
+                  floatPlaceholder="never"
+                  appearance="fill"
+                >
+                  <input
+                    matInput
+                    placeholder="Ex: Organisation India Pvt Ltd"
+                    formControlName="name"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="form-field-hold two-column-field">
+                <mat-label class="form-field-label">Short Name</mat-label>
+                <mat-form-field
+                  class="form-field-input"
+                  floatPlaceholder="never"
+                  appearance="fill"
+                >
+                  <input
+                    matInput
+                    placeholder="Ex: Organisation India Pvt Ltd"
+                    formControlName="shortname"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="form-field-hold two-column-field">
+                <mat-label class="form-field-label">Country</mat-label>
+                <!-- <mat-form-field class="form-field-input" floatPlaceholder="never" appearance="fill">
       <mat-select placeholder="Ex: Country" formControlName="fkcountrycode">
            <span>     
               {{ companyInfo.fkcountrycode}}
             </span>
       </mat-select>
     </mat-form-field> -->
-    <select
-                    class="form-control"
-                    name="country"
-                    id="country"
-                    formControlName="fkcountrycode"
+                <select
+                  class="form-control"
+                  name="country"
+                  id="country"
+                  formControlName="fkcountrycode"
+                >
+                  <option value="" disabled selected>Select Country</option>
+                  <option
+                    *ngFor="let country of country_bb_obj"
+                    [value]="country.id"
                   >
-                    <option value="" disabled selected>Select Country</option>
-                    <option
-                      *ngFor="let country of country_bb_obj"
-                      [value]="country.id"
-                    >
-                      {{ country.label }}
-                    </option>
-                  </select>
-  </div>
-  <div class="form-field-hold two-column-field">
-    <mat-label class="form-field-label">Phone</mat-label>
-    <mat-form-field class="form-field-input" floatPlaceholder="never" appearance="fill">
-      <span matPrefix>+91</span>
-      <input matInput placeholder="Ex: 9876543210" formControlName="phone">
-    </mat-form-field>
-  </div>
-  <div class="form-field-hold two-column-field">
-    <mat-label class="form-field-label">Fax</mat-label>
-    <mat-form-field class="form-field-input" floatPlaceholder="never" appearance="fill">
-      <span matPrefix>+91</span>
-      <input matInput placeholder="Ex: 040-22558877" formControlName="fax">
-    </mat-form-field>
-  </div>
-  <div class="form-field-hold two-column-field">
-    <mat-label class="form-field-label">Email</mat-label>
-    <mat-form-field class="form-field-input" floatPlaceholder="never" appearance="fill">
-      <input matInput type="email" placeholder="Ex: support@company.com" formControlName="email">
-    </mat-form-field>
-  </div>
-  <div class="form-field-hold two-column-field">
-    <mat-label class="form-field-label">Website</mat-label>
-    <mat-form-field class="form-field-input" floatPlaceholder="never" appearance="fill">
-      <input matInput placeholder="Ex: www.company.com" formControlName="website">
-    </mat-form-field>
-  </div>
-  <div class="form-field-hold two-column-field">
-    <mat-label class="form-field-label">WhatsApp</mat-label>
-    <mat-form-field class="form-field-input" floatPlaceholder="never" appearance="fill">
-      <span matPrefix>+91</span>
-      <input matInput placeholder="Ex: 9876543210" formControlName="whatsapp">
-    </mat-form-field>
-  </div>
-  <div class="form-field-hold">
-    <mat-label class="form-field-label">LinkedIN</mat-label>
-    <mat-form-field class="form-field-input" floatPlaceholder="never" appearance="fill">
-      <input matInput placeholder="Ex: www.linkedin.com/company/dtpli" formControlName="linkedin">
-    </mat-form-field>
-  </div>
-  <div class="form-field-hold">
-    <mat-label class="form-field-label">Remarks</mat-label>
-    <mat-form-field class="form-field-input" floatPlaceholder="never" appearance="fill">
-      <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="1"
-        placeholder="Ex. State-of-art development center." formControlName="comments"></textarea>
-    </mat-form-field>
-  </div>
-</div>
-</div>
-</div>
+                    {{ country.label }}
+                  </option>
+                </select>
+              </div>
+              <div class="form-field-hold two-column-field">
+                <mat-label class="form-field-label">Phone</mat-label>
+                <mat-form-field
+                  class="form-field-input"
+                  floatPlaceholder="never"
+                  appearance="fill"
+                >
+                  <span matPrefix>+91</span>
+                  <input
+                    matInput
+                    placeholder="Ex: 9876543210"
+                    formControlName="phone"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="form-field-hold two-column-field">
+                <mat-label class="form-field-label">Fax</mat-label>
+                <mat-form-field
+                  class="form-field-input"
+                  floatPlaceholder="never"
+                  appearance="fill"
+                >
+                  <span matPrefix>+91</span>
+                  <input
+                    matInput
+                    placeholder="Ex: 040-22558877"
+                    formControlName="fax"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="form-field-hold two-column-field">
+                <mat-label class="form-field-label">Email</mat-label>
+                <mat-form-field
+                  class="form-field-input"
+                  floatPlaceholder="never"
+                  appearance="fill"
+                >
+                  <input
+                    matInput
+                    type="email"
+                    placeholder="Ex: support@company.com"
+                    formControlName="email"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="form-field-hold two-column-field">
+                <mat-label class="form-field-label">Website</mat-label>
+                <mat-form-field
+                  class="form-field-input"
+                  floatPlaceholder="never"
+                  appearance="fill"
+                >
+                  <input
+                    matInput
+                    placeholder="Ex: www.company.com"
+                    formControlName="website"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="form-field-hold two-column-field">
+                <mat-label class="form-field-label">WhatsApp</mat-label>
+                <mat-form-field
+                  class="form-field-input"
+                  floatPlaceholder="never"
+                  appearance="fill"
+                >
+                  <span matPrefix>+91</span>
+                  <input
+                    matInput
+                    placeholder="Ex: 9876543210"
+                    formControlName="whatsapp"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="form-field-hold">
+                <mat-label class="form-field-label">LinkedIN</mat-label>
+                <mat-form-field
+                  class="form-field-input"
+                  floatPlaceholder="never"
+                  appearance="fill"
+                >
+                  <input
+                    matInput
+                    placeholder="Ex: www.linkedin.com/company/dtpli"
+                    formControlName="linkedin"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="form-field-hold">
+                <mat-label class="form-field-label">Remarks</mat-label>
+                <mat-form-field
+                  class="form-field-input"
+                  floatPlaceholder="never"
+                  appearance="fill"
+                >
+                  <textarea
+                    matInput
+                    cdkTextareaAutosize
+                    cdkAutosizeMinRows="1"
+                    placeholder="Ex. State-of-art development center."
+                    formControlName="comments"
+                  ></textarea>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </div>
 
-
-
-
-
-
-  <!-- <mat-drawer-content> -->
-    <!-- <h1>string to integer date</h1>
+        <!-- <h1>string to integer date</h1>
     <p>Date string: {{ '06-04-2022' }}</p>
     <p>Date integer: {{'06-04-2022'| intdate }}</p>
 
@@ -229,10 +327,7 @@
 <p>Date and time string: {{ mydate }}</p>
 <p>Date integer: {{ mydate | intdatetime }}</p> -->
 
-    <!-- <div *ngIf="currentField">
-      <ng-container [ngSwitch]="currentField">
-        <div *ngSwitchCase="'field1'">
-          <h1>Overview</h1>
+        <!-- <h1>Overview</h1>
           <p>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
             Consequatur, tenetur sunt praesentium, maiores, corporis doloribus
@@ -351,11 +446,11 @@
               </mat-card-content>
             </mat-card>
             <br />
-          </div>
-          <div id="comp-render" *ngIf="display">
-            <app-orgform [data]="country_bb_obj"></app-orgform>
-          </div>
+          </div> -->
+        <div id="comp-render" *ngIf="display">
+          <app-orgform [data]="country_bb_obj"></app-orgform>
         </div>
+
         <div *ngSwitchCase="'field2'">
           <app-offices></app-offices>
         </div>
@@ -377,7 +472,10 @@
         <div *ngSwitchCase="'field8'">
           <app-identifications></app-identifications>
         </div>
+        <!-- </ng-container> -->
+        <!-- </div> -->
+        <!-- </mat-drawer-container> -->
       </ng-container>
-    </div> -->
-  <!-- </mat-drawer-content> -->
+    </div>
+  </div>
 </mat-drawer-container>

@@ -41,6 +41,8 @@ input {
   margin-right: 16px;
   overflow: hidden;
 
+  padding-top: 10px;
+  height: calc(100% - 10px);
 }
 .title {
   margin: 0;
@@ -50,7 +52,7 @@ input {
 }
 
 .primary-color-text {
-  color: #666
+  color: #666;
 }
 
 .spacer {
@@ -79,7 +81,7 @@ input {
   display: flex;
   padding: 20px 16px;
   overflow: auto;
-} 
+}
 .view-entry-hold {
   display: flex;
   flex-direction: column;
@@ -100,7 +102,6 @@ input {
   font-size: 120%;
   padding: 4px 10px 25px;
   /* border-bottom: 1px solid #ddd; */
-
 }
 
 .entry-text {
@@ -134,7 +135,24 @@ span {
   max-height: 65px;
 }
 
-.form-field-input{
-   border-bottom: 1px solid #ddd;
+.form-field-input {
+  border-bottom: 1px solid #ddd;
 }
 
+.mat-display-1,
+button {
+  margin-bottom: 25px;
+}
+
+.primary-color-text {
+  color: #b43b3d;
+}
+
+.mat-small {
+  color: #888;
+}
+
+.title {
+  margin: 0;
+  font-size: 34px;
+}
