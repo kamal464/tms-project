@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
-
 @Component({
   selector: 'app-grades',
   templateUrl: './grades.component.html',
@@ -9,13 +8,14 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 })
 export class GradesComponent {
   gradeform: any = FormGroup;
+  myDate:any;
   org_bb_obj: any = [];
   org_id = [];
   display = false;
   onPress() {
     this.display = true;
   }
-
+  
   constructor(private http: HttpClient, private _fb: FormBuilder) {
     this.gradeform = this._fb.group({
       fkorgid: new FormControl(''),
@@ -23,8 +23,9 @@ export class GradesComponent {
       name: new FormControl(''),
       // type:new FormControl(''),
     });
+    this.myDate = new Date()
   }
-
+  
   gradeRecord() {
     this.http.post('', {}).subscribe((grade) => {
       this.gradeform.patchValue(grade);

@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
+import { Component ,} from '@angular/core';
 import { OrgformComponent } from './orgform/orgform.component';
-import { MatCardModule } from '@angular/material/card';
 import { HttpClient ,HttpHeaders} from '@angular/common/http';
-import { FormBuilder, FormGroup,FormControl} from '@angular/forms';
+import { FormBuilder, FormGroup,FormControl,Validators} from '@angular/forms';
 import { CountryService } from './countryservice.service';
 
 
@@ -13,6 +12,11 @@ import { CountryService } from './countryservice.service';
 })
 export class AppComponent {
   title;
+  errorMsg;
+  isProcessing = false;
+  companyInfo: any = [];
+  _currentAction = 'view';
+  mydate;
   currentField: string;
 
   showContent(field: string): void {
@@ -29,10 +33,11 @@ export class AppComponent {
 
   constructor(private http: HttpClient,
     private _fb: FormBuilder,
-    private countryService: CountryService) {
-
+    private countryService: CountryService,
+   ) {
+      this.mydate = new Date();
       this.empForm = this._fb.group({ 
-        id:new FormControl('1680097249'),
+        id:new FormControl('1680093284'),
         name:new FormControl(''),
         shortname:new FormControl(''),
         fkcountrycode:new FormControl(this.country_id),
@@ -54,21 +59,21 @@ export class AppComponent {
   
   ngOnInit(): void {
     
-  //  this.getRecord();
-  //  this.Countrydd();
+   this.getRecord();
+   this.Countrydd();
    
   }
 
-  getRecord() {
-    
-    this.http
-      .post('http://192.168.0.55:5000/org/getorg',{})
-      .subscribe((data) => {
-        this.empForm.patchValue(data);
-        console.log(data);
-      }); 
+ 
 
-}
+  
+  getRecord(){
+    this.http.post('http://192.168.0.55:5000/org/getorg',{}).subscribe((data =>{
+      this.empForm.patchValue(data)
+      this.companyInfo = data;
+      console.log(data)
+    }))
+  }
 
 
 
@@ -92,10 +97,11 @@ update() {
   const formData = this.empForm.value;
   this.country_id = this.empForm.get('fkcountrycode').value;
 
-  this.http.put('http://192.168.0.55:5000/orgupdate', formData).subscribe((user) => {
+  this.http.put('http://192.168.0.55:5000/org/updateorg', formData).subscribe((user) => {
 
     this.empForm.patchValue(user);
     console.log('field is updated')
+
   });
 }
 
@@ -108,7 +114,21 @@ Countrydd() {
   });
 }
 
-
+doAction(action): void {
+  this.errorMsg = '';
+  switch (action) {
+    case 'edit':
+      
+      this._currentAction = action;
+      break;
+    case 'save':
+      this.update();
+      this._currentAction = 'view';
+      break;
+    default:
+      this._currentAction = 'view';
+  }
+}
 
 
 

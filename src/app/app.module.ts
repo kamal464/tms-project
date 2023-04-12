@@ -22,7 +22,12 @@ import { DepartmenttypeComponent } from './departmenttype/departmenttype.compone
 import { DesignationsComponent } from './designations/designations.component';
 import { GradesComponent } from './grades/grades.component';
 import { IdentificationsComponent } from './identifications/identifications.component';
-
+import { IntdatePipe } from './shared/pipes/intdate.pipe';
+import { StringdatePipe } from './shared/pipes/stringdate.pipe';
+import { IntdatetimePipe } from './shared/pipes/intdatetime.pipe';
+import { StringdatetimePipe } from './shared/pipes/stringdatetime.pipe';
+import { SettingsComponent } from './settings/settings.component';
+// import { SettingsComponent } from './settings/settings/settings.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +38,13 @@ import { IdentificationsComponent } from './identifications/identifications.comp
     DesignationsComponent,
     GradesComponent,
     IdentificationsComponent,
+    // SettingsComponent,
+   
+    IntdatePipe,
+    StringdatePipe,
+    IntdatetimePipe,
+    StringdatetimePipe,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

@@ -12,7 +12,9 @@ export class DepartmentComponent {
   offices: any = [];
   organizations: any = [];
   departments: any = [];
-  office_dd: any = [];
+  office_dd: any = [
+  
+  ];
   org_dd: any = [];
   display = false;
   onPress() {
@@ -21,6 +23,7 @@ export class DepartmentComponent {
 
   constructor(private http: HttpClient, private _fb: FormBuilder) {
     this.depform = this._fb.group({
+      id:new FormControl(''), 
       fkofficeid: new FormControl(''),
       fkorgid: new FormControl(''),
       fkdepartmenttypecode: new FormControl(''),
@@ -46,7 +49,7 @@ export class DepartmentComponent {
     // this.org_id = this.ofform.get('fkcountrycode').value;
     let jsonform = JSON.stringify(this.depform.value);
     console.log(jsonform);
-    this.http.post('', jsonform).subscribe((dept) => {
+    this.http.post('http://192.168.0.55:5000/department/adddepartment', jsonform).subscribe((dept) => {
       console.log(dept);
     });
   }
