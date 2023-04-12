@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MaterialModule } from 'src/app/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -60,6 +61,7 @@ import { SettingsComponent } from './settings/settings.component';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    MaterialModule,
     MatSelectModule,
   ],
   providers: [
